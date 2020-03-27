@@ -1,6 +1,8 @@
 
 // buffer合并
 const mergeBuffer = (bufferArr = []) => {
+  if(!bufferArr) return null;
+  if(bufferArr.constructor === ArrayBuffer) return bufferArr;
   if(bufferArr.length === 0) return null;
   if(bufferArr.length === 1) return bufferArr[0];
   const totalSize = bufferArr.reduce((a, b) => a + b.byteLength, 0);
@@ -14,7 +16,7 @@ const mergeBuffer = (bufferArr = []) => {
 };
 
 const unknownStatus = 'Unknown';
-// 判断解码器要拿的数据是否flv、是的话是否可以用于解码了
+// 通过buffer获取FLV视频编码类型
 const getFlvVcodecByBuffer = (bufferArr, loaded = false) => {
   const buffer = mergeBuffer(bufferArr);
   const waitingStatus = loaded ? unknownStatus : 'waiting';
