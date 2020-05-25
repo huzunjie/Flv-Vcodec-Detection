@@ -43,7 +43,7 @@ const getFlvVcodecByBuffer = (bufferArr, loaded = false) => {
         } else if (vcodecVal === 12) {
             status = 'H265';
         } else {
-          status = 'Unknown';
+          status = unknownStatus;
         }
         break;
       }
